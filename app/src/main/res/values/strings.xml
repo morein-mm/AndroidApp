@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">NMedia</string>
     <string name="hello">NMedia!</string>
+    <string name="author">Netology. University of Internet professions</string>
+    <string name="piblished">May, 21, 18:36</string>
+    <string name="post_text">Hello!</string>
+    <string name="shared">20</string>
+    <string name="liked">12</string>
+    <string name="viewed">35K</string>
 </resources>
