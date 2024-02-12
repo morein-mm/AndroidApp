@@ -3,8 +3,10 @@ package ru.netology.nmedia
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.viewModels
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.dto.PostViewModel
 import kotlin.math.floor
 
 class MainActivity : AppCompatActivity() {
@@ -13,40 +15,27 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(
-            id = 1,
-            author = "Нетология. Университет интернет-профессий",
-            published = "21 мая в 18:36",
-            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению.",
-            likes = 8456,
-            shared = 1567856
-        )
-
-        with(binding) {
-            author.text = post.author
-            published.text = post.published
-            postText.text = post.content
-            liked.text = convertToString(post.likes)
-            shared.text = convertToString(post.shared)
-
-
-            if(post.likedByMe) {
-                like?.setImageResource(R.drawable.baseline_thumb_up_red_24)
-            }
-
-            like?.setOnClickListener {
-                if(post.likedByMe) post.likes-- else post.likes++
+        val viewModel: PostViewModel by viewModels()
+        viewModel.data.observe(this) {post ->
+            with(binding) {
+                author.text = post.author
+                published.text = post.published
+                postText.text = post.content
                 liked.text = convertToString(post.likes)
-                post.likedByMe = !post.likedByMe
-                like?.setImageResource(
-                    if (post.likedByMe) R.drawable.baseline_thumb_up_red_24 else R.drawable.baseline_thumb_up_24
+                shared.text = convertToString(post.shared)
+                like.setImageResource(
+                    if(post.likedByMe) R.drawable.baseline_thumb_up_red_24 else R.drawable.baseline_thumb_up_24
                 )
             }
+        }
 
-            share?.setOnClickListener {
-                post.shared++
-                shared.text = convertToString(post.shared)
-            }
+        binding.like.setOnClickListener {
+            viewModel.like()
+        }
+
+
+        binding.share.setOnClickListener {
+            viewModel.share()
         }
     }
 
