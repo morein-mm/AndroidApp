@@ -1,154 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".MainActivity">
-
-
-    <ImageView
-        android:id="@+id/like"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_thumb_up_24"
-        app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/liked"
-        android:layout_marginVertical="16dp"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="317dp" />
-
-    <ImageView
-        android:id="@+id/share"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@id/liked"
-        android:src="@drawable/baseline_share_24"
-        app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:layout_constraintEnd_toStartOf="@id/shared"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="229dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_more_vert_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@android:color/transparent"
- />
-
-    <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/barrier"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@drawable/netology" />
-
-    <TextView
-        android:id="@+id/author"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/author"
-        app:layout_constraintBottom_toTopOf="@+id/published"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
-        app:layout_constraintStart_toEndOf="@id/avatar"
-        app:layout_constraintTop_toTopOf="@id/avatar" />
-
-    <TextView
-        android:id="@+id/published"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/piblished"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@id/author"
-        app:layout_constraintBottom_toBottomOf="@id/avatar"
-        app:layout_constraintStart_toEndOf="@id/avatar"
-        app:layout_constraintBottom_toTopOf="@id/barrier"
-        android:layout_marginBottom="16dp"
-         />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="author,avatar,published"
-        app:barrierDirection="bottom" />
-
-
-    <TextView
-        android:id="@+id/post_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/post_text"
-        app:layout_constraintTop_toBottomOf="@id/barrier"
-        app:layout_constraintBottom_toTopOf="@id/barrier2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginVertical="16dp"
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/post_card"
         />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="post_text"
-        app:barrierDirection="bottom" />
-
-    <TextView
-        android:id="@+id/shared"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/shared"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="246dp"
-        app:layout_constraintStart_toEndOf="@id/share"
-        app:layout_constraintTop_toTopOf="@id/share"
-        app:layout_constraintBottom_toBottomOf="@id/share"/>
-    <TextView
-        android:id="@+id/liked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/liked"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="246dp"
-        app:layout_constraintStart_toEndOf="@id/like"
-        app:layout_constraintTop_toTopOf="@id/like"
-        app:layout_constraintBottom_toBottomOf="@id/like"/>
-
-    <ImageView
-        android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_remove_red_eye_24"
-        app:layout_constraintEnd_toStartOf="@id/viewed"
-        app:layout_constraintTop_toTopOf="@id/viewed"
-        app:layout_constraintBottom_toBottomOf="@id/viewed"
-        android:layout_marginEnd="16dp"
-       tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="317dp" />
-
-    <TextView
-        android:id="@+id/viewed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/viewed"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="246dp"
-        android:layout_marginVertical="16dp"
-        app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

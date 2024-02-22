@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.activity.viewModels
+import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.databinding.PostCardBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.dto.PostViewModel
 import kotlin.math.floor
@@ -16,27 +18,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewModel: PostViewModel by viewModels()
-        viewModel.data.observe(this) {post ->
-            with(binding) {
-                author.text = post.author
-                published.text = post.published
-                postText.text = post.content
-                liked.text = convertToString(post.likes)
-                shared.text = convertToString(post.shared)
-                like.setImageResource(
-                    if(post.likedByMe) R.drawable.baseline_thumb_up_red_24 else R.drawable.baseline_thumb_up_24
-                )
-            }
-        }
 
-        binding.like.setOnClickListener {
-            viewModel.like()
+        val adapter = PostsAdapter ({
+           viewModel.likeById(it.id)
+        },
+        {
+            viewModel.shareById(it.id)
+        })
+
+        binding.list.adapter = adapter
+
+        viewModel.data.observe(this) {posts ->
+            adapter.submitList(posts)
         }
 
 
-        binding.share.setOnClickListener {
-            viewModel.share()
-        }
+
+//
+//        binding.share.setOnClickListener {
+//            viewModel.share()
+//        }
     }
 
 
