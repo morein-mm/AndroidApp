@@ -7,4 +7,5 @@
     <string name="shared">20</string>
     <string name="liked">12</string>
     <string name="viewed">35K</string>
+    <string name="menu_remove">Delete</string>
 </resources>

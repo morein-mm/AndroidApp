@@ -11,7 +11,7 @@ class PostRepositoryInMemoryImpl: PostRepository {
             content = "Знаний хватит на всех: на следующей неделе разбираемся с р...",
             published = "18 сентября в 10:12",
             likedByMe = false,
-            likes = 10,
+            likes = 9567,
             shared = 25
         ),
         Post(
@@ -21,7 +21,7 @@ class PostRepositoryInMemoryImpl: PostRepository {
             published = "21 мая в 18:56",
             likedByMe = false,
             likes = 10,
-            shared = 25
+            shared = 96789
         )
     )
 
@@ -44,8 +44,4 @@ class PostRepositoryInMemoryImpl: PostRepository {
         data.value = posts
     }
 
-//    override fun share() {
-//        post = post.copy(shared = post.shared + 1)
-//        data.value = post
-//    }
 }
