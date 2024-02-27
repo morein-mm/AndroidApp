@@ -32,7 +32,7 @@
         tools:layout_editor_absoluteY="229dp" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_more_vert_24"
@@ -60,7 +60,7 @@
         android:maxLines="1"
         android:text="@string/author"
         app:layout_constraintBottom_toTopOf="@+id/published"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintEnd_toStartOf="@+id/menu"
         app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toTopOf="@id/avatar" />
 

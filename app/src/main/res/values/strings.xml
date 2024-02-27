@@ -3,9 +3,11 @@
     <string name="hello">NMedia!</string>
     <string name="author">Netology. University of Internet professions</string>
     <string name="piblished">May, 21, 18:36</string>
-    <string name="post_text">Hello!</string>
     <string name="shared">20</string>
     <string name="liked">12</string>
     <string name="viewed">35K</string>
     <string name="menu_remove">Delete</string>
+    <string name="menu_edit">Edit</string>
+    <string name="post_text">Post text</string>
+    <string name="error_empty_content">Content can not be empty</string>
 </resources>
