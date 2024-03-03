@@ -12,9 +12,69 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/barrierTop"
+        app:layout_constraintBottom_toTopOf="@id/edit_block"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/post_card" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="edit_block" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/edit_block"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@id/barrierTop">
+
+        <ImageButton
+            android:id="@+id/edit_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/baseline_edit_24"
+            app:layout_constraintStart_toStartOf="@id/edit_block"
+            app:layout_constraintTop_toTopOf="@id/edit_block" />
+
+        <TextView
+            android:id="@+id/post_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/post_edit"
+            android:textColor="@android:color/holo_blue_dark"
+            app:layout_constraintEnd_toStartOf="@id/cancel_icon"
+            app:layout_constraintStart_toEndOf="@id/edit_icon"
+            app:layout_constraintTop_toTopOf="@id/edit_block"
+            tools:text="Edit post" />
+
+        <TextView
+            android:id="@+id/post_line"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintEnd_toStartOf="@id/cancel_icon"
+            app:layout_constraintStart_toEndOf="@id/edit_icon"
+            app:layout_constraintTop_toBottomOf="@id/post_edit"
+            tools:text="Текст поста..." />
+
+
+        <ImageButton
+            android:id="@+id/cancel_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/baseline_cancel_24"
+            app:layout_constraintEnd_toEndOf="@id/edit_block"
+            app:layout_constraintTop_toTopOf="@id/edit_block" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
         android:id="@+id/edit"

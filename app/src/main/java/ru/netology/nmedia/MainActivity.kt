@@ -2,6 +2,7 @@ package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import ru.netology.nmedia.adapter.PostsAdapter
@@ -54,6 +55,8 @@ class MainActivity : AppCompatActivity() {
             if (post.id != 0L) {
                 binding.edit.setText(post.content)
                 binding.edit.focusAndShowKeyboard()
+                binding.postLine.text = post.content
+                binding.group.visibility = View.VISIBLE
             }
         }
 
@@ -64,6 +67,16 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             viewModel.changeContentAndSave(text)
+            binding.postLine.text = ""
+            binding.group.visibility = View.GONE
+            binding.edit.setText("")
+            binding.edit.clearFocus()
+            AndroidUtils.hideKeyboard(it)
+        }
+
+        binding.cancelIcon.setOnClickListener {
+            binding.postLine.text = ""
+            binding.group.visibility = View.GONE
             binding.edit.setText("")
             binding.edit.clearFocus()
             AndroidUtils.hideKeyboard(it)
