@@ -80,6 +80,7 @@ class MainActivity : AppCompatActivity() {
             binding.edit.setText("")
             binding.edit.clearFocus()
             AndroidUtils.hideKeyboard(it)
+            viewModel.cancelEdit()
         }
     }
 }
