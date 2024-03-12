@@ -30,7 +30,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Языков программирования много, и выбрать какой-то один бывает нелегко. Собрали подборку статей, которая поможет вам начать, если вы остановили свой выбор на JavaScript.",
             published = "19 сентября в 10:24",
             likedByMe = false,
-            likes = 0,
+            likes = 4567,
             shared = 0
         ),
         Post(
@@ -48,7 +48,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Диджитал давно стал частью нашей жизни: мы общаемся в социальных сетях и мессенджерах, заказываем еду, такси и оплачиваем счета через приложения.",
             published = "20 сентября в 10:14",
             likedByMe = false,
-            likes = 0,
+            likes = 76,
             shared = 0
         ),
         Post(
@@ -58,7 +58,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "21 сентября в 10:12",
             likedByMe = false,
             likes = 0,
-            shared = 0
+            shared = 2
         ),
         Post(
             id = nextId++,
@@ -66,8 +66,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Таймбоксинг — отличный способ навести порядок в своём календаре и разобраться с делами, которые долго откладывали на потом. Его главный принцип — на каждое дело заранее выделяется определённый отрезок времени. В это время вы работаете только над одной задачей, не переключаясь на другие. Собрали советы, которые помогут внедрить таймбоксинг \uD83D\uDC47\uD83C\uDFFB",
             published = "22 сентября в 10:12",
             likedByMe = false,
-            likes = 0,
-            shared = 0
+            likes = 101,
+            shared = 4327
         ),
         Post(
             id = nextId++,
@@ -76,7 +76,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "22 сентября в 10:14",
             likedByMe = false,
             likes = 0,
-            shared = 0
+            shared = 967
         ),
         Post(
             id = nextId++,
@@ -85,7 +85,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "23 сентября в 10:12",
             likedByMe = false,
             likes = 0,
-            shared = 0
+            shared = 10
         ),
     ).reversed()
 

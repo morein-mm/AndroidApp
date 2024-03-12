@@ -6,39 +6,40 @@
     android:layout_height="wrap_content"
     android:layout_marginVertical="8dp">
 
-    <ImageView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="16dp"
-        android:src="@drawable/baseline_thumb_up_24"
-        app:layout_constraintEnd_toStartOf="@id/liked"
+        android:checkable="true"
+        app:icon="@drawable/ic_like_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="317dp" />
+        tools:layout_editor_absoluteY="317dp"
+        style="@style/Widget.AppTheme.LikeButton"
+        />
 
-    <ImageView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="16dp"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/baseline_share_24"
-        app:layout_constraintEnd_toStartOf="@id/shared"
-        app:layout_constraintStart_toEndOf="@id/liked"
+        app:icon="@drawable/ic_share_24"
+        app:layout_constraintStart_toEndOf="@id/like"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="229dp" />
+        tools:layout_editor_absoluteY="229dp"
+        style="@style/Widget.AppTheme.ShareButton"/>
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:src="@drawable/baseline_more_vert_24"
+        android:layout_marginBottom="@dimen/common_spacing"
+        app:icon="@drawable/ic_more_vert_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/Widget.AppTheme.IconButton"/>
 
     <ImageView
         android:id="@+id/avatar"
@@ -102,28 +103,6 @@
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="post_text" />
-
-    <TextView
-        android:id="@+id/shared"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/shared"
-        app:layout_constraintBottom_toBottomOf="@id/share"
-        app:layout_constraintStart_toEndOf="@id/share"
-        app:layout_constraintTop_toTopOf="@id/share"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="246dp" />
-
-    <TextView
-        android:id="@+id/liked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/liked"
-        app:layout_constraintBottom_toBottomOf="@id/like"
-        app:layout_constraintStart_toEndOf="@id/like"
-        app:layout_constraintTop_toTopOf="@id/like"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="246dp" />
 
     <ImageView
         android:id="@+id/view"
