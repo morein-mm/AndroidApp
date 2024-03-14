@@ -2,7 +2,6 @@ package ru.netology.nmedia
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.launch
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.adapter.OnInteractionListener
@@ -64,8 +63,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.fab.setOnClickListener {
-            newPostLauncher.launch()
+            newPostLauncher.launch(null)
         }
+
+        viewModel.edited.observe(this) { post ->
+            if (post.id != 0L) {
+                newPostLauncher.launch(post.content)
+            }
+        }
+
 
 //        viewModel.edited.observe(this) { post ->
 //            if (post.id != 0L) {
