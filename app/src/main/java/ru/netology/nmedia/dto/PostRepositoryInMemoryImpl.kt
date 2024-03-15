@@ -13,7 +13,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "21 мая в 18:36",
             likedByMe = false,
             likes = 0,
-            shared = 0
+            shared = 0,
+            video = null
         ),
         Post(
             id = nextId++,
@@ -22,7 +23,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "18 сентября в 10:12",
             likedByMe = false,
             likes = 0,
-            shared = 0
+            shared = 0,
+            video = "https://www.youtube.com/watch?v=ayjuXPMVJSo&t=458s"
         ),
         Post(
             id = nextId++,
@@ -31,7 +33,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "19 сентября в 10:24",
             likedByMe = false,
             likes = 4567,
-            shared = 0
+            shared = 0,
+            video = null
         ),
         Post(
             id = nextId++,
@@ -40,7 +43,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "19 сентября в 14:12",
             likedByMe = false,
             likes = 0,
-            shared = 0
+            shared = 0,
+            video = null
         ),
         Post(
             id = nextId++,
@@ -49,7 +53,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "20 сентября в 10:14",
             likedByMe = false,
             likes = 76,
-            shared = 0
+            shared = 0,
+            video = null
         ),
         Post(
             id = nextId++,
@@ -58,7 +63,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "21 сентября в 10:12",
             likedByMe = false,
             likes = 0,
-            shared = 2
+            shared = 2,
+            video = null
         ),
         Post(
             id = nextId++,
@@ -67,7 +73,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "22 сентября в 10:12",
             likedByMe = false,
             likes = 101,
-            shared = 4327
+            shared = 4327,
+            video = null
         ),
         Post(
             id = nextId++,
@@ -76,7 +83,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "22 сентября в 10:14",
             likedByMe = false,
             likes = 0,
-            shared = 967
+            shared = 967,
+            video = null
         ),
         Post(
             id = nextId++,
@@ -85,7 +93,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "23 сентября в 10:12",
             likedByMe = false,
             likes = 0,
-            shared = 10
+            shared = 10,
+            video = null
         ),
     ).reversed()
 

@@ -22,7 +22,6 @@ class NewPostActivity : AppCompatActivity() {
             binding.edit.setText("")
         }
 
-
         binding.ok.setOnClickListener {
             val text = binding.edit.text.toString()
             if (text.isNotBlank()) {

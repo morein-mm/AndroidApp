@@ -1,8 +1,12 @@
 package ru.netology.nmedia.adapter
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
@@ -16,6 +20,7 @@ interface OnInteractionListener {
     fun onShare(post: Post)
     fun onRemove(post: Post)
     fun onEdit(post: Post)
+    fun playVideo(post: Post)
 }
 typealias onLikeListener = (Post) -> Unit
 typealias onRemoveListener = (Post) -> Unit
@@ -44,12 +49,18 @@ class PostViewHolder(
             postText.text = post.content
             like.isChecked = post.likedByMe
             like.text = convertToString(post.likes)
-//            liked.text = convertToString(post.likes)
-//            shared.text = convertToString(post.shared)
             share.text = convertToString(post.shared)
-//            like.setImageResource(
-//                if (post.likedByMe) R.drawable.baseline_thumb_up_red_24 else R.drawable.baseline_thumb_up_24
-//            )
+            if (post.video.isNullOrBlank()) {
+                videoGroup.visibility = View.GONE
+            } else {
+                videoGroup.visibility = View.VISIBLE
+            }
+            videoPreview.setOnClickListener {
+                onInteractionListener.playVideo(post)
+            }
+            playVideo.setOnClickListener {
+                onInteractionListener.playVideo(post)
+            }
             like.setOnClickListener {
                 onInteractionListener.onLike(post)
             }
@@ -65,10 +76,12 @@ class PostViewHolder(
                                 onInteractionListener.onRemove(post)
                                 true
                             }
+
                             R.id.edit -> {
                                 onInteractionListener.onEdit(post)
                                 true
                             }
+
                             else -> false
                         }
                     }

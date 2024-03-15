@@ -8,6 +8,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/like"
+        style="@style/Widget.AppTheme.LikeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
@@ -15,31 +16,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="317dp"
-        style="@style/Widget.AppTheme.LikeButton"
-        />
+        tools:layout_editor_absoluteY="317dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/share"
+        style="@style/Widget.AppTheme.ShareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:icon="@drawable/ic_share_24"
         app:layout_constraintStart_toEndOf="@id/like"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="229dp"
-        style="@style/Widget.AppTheme.ShareButton"/>
+        tools:layout_editor_absoluteY="229dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"
+        style="@style/Widget.AppTheme.IconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
         android:layout_marginBottom="@dimen/common_spacing"
+        android:background="@android:color/transparent"
         app:icon="@drawable/ic_more_vert_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/Widget.AppTheme.IconButton"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/avatar"
@@ -93,7 +92,7 @@
         app:layout_constraintBottom_toTopOf="@id/barrier2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@+id/videoPreview"
 
         />
 
@@ -126,4 +125,32 @@
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         tools:layout_editor_absoluteX="74dp"
         tools:layout_editor_absoluteY="246dp" />
+
+    <ImageView
+        android:id="@+id/videoPreview"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toTopOf="@id/post_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        app:srcCompat="@drawable/video_preview" />
+
+    <ImageView
+        android:id="@+id/playVideo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/videoPreview"
+        app:layout_constraintEnd_toEndOf="@id/videoPreview"
+        app:layout_constraintStart_toStartOf="@+id/videoPreview"
+        app:layout_constraintTop_toTopOf="@+id/videoPreview"
+        app:srcCompat="@drawable/ic_play_circle_24dp" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/videoGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="videoPreview,playVideo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

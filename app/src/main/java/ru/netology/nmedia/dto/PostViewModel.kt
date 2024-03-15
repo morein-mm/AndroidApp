@@ -11,7 +11,8 @@ val empty = Post(
     published = "",
     likedByMe = false,
     likes = 0,
-    shared = 0
+    shared = 0,
+    video = null
 )
 
 class PostViewModel : ViewModel() {
@@ -38,6 +39,5 @@ class PostViewModel : ViewModel() {
     fun cancelEdit() {
         edited.value = empty
     }
-
 
 }

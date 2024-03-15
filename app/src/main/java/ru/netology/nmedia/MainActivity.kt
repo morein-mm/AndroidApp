@@ -1,9 +1,11 @@
 package ru.netology.nmedia
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import ru.netology.nmedia.adapter.OnInteractionListener
 import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
@@ -43,10 +45,17 @@ class MainActivity : AppCompatActivity() {
 
             override fun onRemove(post: Post) {
                 viewModel.removeById(post.id)
+
+
             }
 
             override fun onEdit(post: Post) {
                 viewModel.edit(post)
+            }
+
+            override fun playVideo(post: Post) {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+                startActivity(intent)
             }
 
         })
@@ -71,6 +80,8 @@ class MainActivity : AppCompatActivity() {
                 newPostLauncher.launch(post.content)
             }
         }
+
+
 
 
 //        viewModel.edited.observe(this) { post ->
