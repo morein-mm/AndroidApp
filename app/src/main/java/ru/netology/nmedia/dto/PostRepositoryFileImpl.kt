@@ -6,11 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class PostRepositorySharedPrefsImpl(context: Context) : PostRepository {
+class PostRepositoryFileImpl(private val context: Context) : PostRepository {
     private val gson = Gson()
-    private val prefs = context.getSharedPreferences("repo", Context.MODE_PRIVATE)
     private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
-    private val key = "posts"
+    private val filename = "posts.json"
 
 
     private var nextId = 1L
@@ -23,9 +22,11 @@ class PostRepositorySharedPrefsImpl(context: Context) : PostRepository {
     private val data = MutableLiveData(posts)
 
     init {
-        prefs.getString(key, null).let {
-            posts = gson.fromJson(it, type)
-            nextId = posts.maxOfOrNull { it.id }?.inc() ?: 1
+        if (context.filesDir.resolve(filename).exists()) {
+            context.openFileInput(filename).bufferedReader().use {
+                posts = gson.fromJson(it, type)
+                nextId = posts.maxOfOrNull { it.id }?.inc() ?: 1
+            }
         }
     }
 
@@ -64,9 +65,8 @@ class PostRepositorySharedPrefsImpl(context: Context) : PostRepository {
     }
 
     private fun sync() {
-        prefs.edit().apply {
-            putString(key, gson.toJson(posts))
-            apply()
+        context.openFileOutput(filename, Context.MODE_PRIVATE).bufferedWriter().use {
+            it.write(gson.toJson(posts))
         }
     }
 }

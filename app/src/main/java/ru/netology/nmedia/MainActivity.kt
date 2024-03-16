@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import ru.netology.nmedia.adapter.OnInteractionListener
 import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
@@ -21,8 +20,12 @@ class MainActivity : AppCompatActivity() {
         val viewModel: PostViewModel by viewModels()
 
         val newPostLauncher = registerForActivityResult(NewPostContract) { result ->
-            result ?: return@registerForActivityResult
-            viewModel.changeContentAndSave(result)
+            if (result.isNullOrEmpty()) {
+                viewModel.cancelEdit()
+                return@registerForActivityResult
+            } else {
+                viewModel.changeContentAndSave(result)
+            }
         }
 
         val adapter = PostsAdapter(object : OnInteractionListener {
@@ -80,8 +83,6 @@ class MainActivity : AppCompatActivity() {
                 newPostLauncher.launch(post.content)
             }
         }
-
-
 
 
 //        viewModel.edited.observe(this) { post ->
