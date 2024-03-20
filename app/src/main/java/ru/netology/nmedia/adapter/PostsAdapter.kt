@@ -1,12 +1,9 @@
 package ru.netology.nmedia.adapter
 
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
@@ -21,6 +18,7 @@ interface OnInteractionListener {
     fun onRemove(post: Post)
     fun onEdit(post: Post)
     fun playVideo(post: Post)
+    fun onView(post: Post)
 }
 typealias onLikeListener = (Post) -> Unit
 typealias onRemoveListener = (Post) -> Unit
@@ -29,8 +27,10 @@ class PostsAdapter(
     private val onInteractionListener: OnInteractionListener,
 ) : androidx.recyclerview.widget.ListAdapter<Post, PostViewHolder>(PostDiffCallBack) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        val view = PostCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PostViewHolder(view, onInteractionListener)
+//        val view = PostCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+//        return PostViewHolder(view, onInteractionListener)
+        val binding = PostCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return PostViewHolder(binding, onInteractionListener)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
@@ -86,6 +86,9 @@ class PostViewHolder(
                         }
                     }
                 }.show()
+            }
+            postText.setOnClickListener {
+                onInteractionListener.onView(post)
             }
         }
     }
