@@ -25,5 +25,9 @@
         android:id="@+id/postFragment"
         android:name="ru.netology.nmedia.PostFragment"
         android:label="fragment_post"
-        tools:layout="@layout/fragment_post" />
+        tools:layout="@layout/fragment_post" >
+        <action
+            android:id="@+id/action_postFragment_to_newPostFragment"
+            app:destination="@id/newPostFragment" />
+    </fragment>
 </navigation>

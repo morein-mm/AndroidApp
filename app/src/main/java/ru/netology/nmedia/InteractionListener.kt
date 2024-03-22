@@ -3,10 +3,7 @@ package ru.netology.nmedia
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import ru.netology.nmedia.NewPostFragment.Companion.textArg
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.dto.PostViewModel
 
@@ -39,13 +36,13 @@ open class InteractionListener(private val context: Context, private val viewMod
         viewModel.removeById(post.id)
     }
     override fun onEdit(post: Post) {
-        findNavController(fragment).navigate(
-            R.id.action_feedFragment_to_newPostFragment,
-            Bundle().apply {
-                textArg = post.content
-            }
-        )
-        viewModel.edit(post)
+//        findNavController(fragment).navigate(
+//            R.id.action_feedFragment_to_newPostFragment,
+//            Bundle().apply {
+//                textArg = post.content
+//            }
+//        )
+//        viewModel.edit(post)
     }
     override fun onView(post: Post) {
 //        findNavController(fragment).navigate(
